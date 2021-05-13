@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.create!(email: "admin@email.com", username: "iamadmin", password: "admin00", is_admin: true)
 c = Category.create!(name: "Music")
 e = Exam.create!(title: "Music symbols", category: c)
 q = Question.create!(title: "What is mf stand for?", score: 10, exam: e)

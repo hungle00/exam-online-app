@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="text-center jumbotron mt-5">
+  <div class="container">
+    <h1 class="font-weight-bold">Welcome to Exam Online App</h1>
+    <p class="mt-4"><%= link_to 'Register', new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+    <p> Or have an account, <%= link_to 'Log In', new_user_session_path %></p>
+  </div>
+</div>
