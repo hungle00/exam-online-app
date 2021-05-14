@@ -1,7 +1,29 @@
-<section>
-  <h2>Profile: <%= @user.username %></h2>
-  <p>
-    <strong>Email: </strong>
-    <%= @user.email %>
-  </p>
-</section>
+<div class="row mt-4 ms-4">
+  <div class="col-5">
+    <section>
+      <h2>Profile: <%= @user.username %></h2>
+      <p>
+        <strong>Email: </strong>
+        <%= @user.email %>
+      </p>
+
+      <% if @user.avatar.attached? %>
+        <%= link_to "View avatar", url_for(@user.avatar) %><br>
+        <%= image_tag @user.avatar, size: "200x200" %>
+      <% end %>
+    </section>
+  </div>
+
+  <div class="col">
+    <h3>You took <%= @user.count_submissions %> exams</h3>
+    <h3>All submissions</h3>
+    <ul>
+      <% @submissions.each do |submission| %>
+        <li>
+          <p>Exam titles: <%= submission.exam.title %></p>
+          <p>Score: <%= submission.score %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
