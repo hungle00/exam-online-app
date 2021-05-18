@@ -26,7 +26,7 @@
               </svg>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-               <% current_user.notifications.each do |notification| %>
+              <% current_user.notifications.each do |notification| %>
                 <li class="dropdown-item" ><%= notification.content %></li>
               <% end %>
             </ul>

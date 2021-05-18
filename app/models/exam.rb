@@ -4,6 +4,6 @@ class Exam < ApplicationRecord
   has_many :submissions
 
   def total_score
-    self.questions.sum(:score)
+    questions.sum(:score)
   end
 end

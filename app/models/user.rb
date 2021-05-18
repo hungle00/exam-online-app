@@ -4,15 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  extend FriendlyId
+  friendly_id :username, use: :slugged
+  
   validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validate :validate_username
+  before_create :validate_username
   has_one_attached :avatar
 
   has_many :notifications
   has_many :submissions
 
   def count_submissions
-    self.submissions.count
+    submissions.count
   end
 
   private 
