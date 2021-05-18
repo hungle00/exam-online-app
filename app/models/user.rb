@@ -8,14 +8,14 @@ class User < ApplicationRecord
   friendly_id :username, use: :slugged
   
   validates :username, presence: true, uniqueness: { case_sensitive: false }
-  before_save :validate_username
+  before_create :validate_username
   has_one_attached :avatar
 
   has_many :notifications
   has_many :submissions
 
   def count_submissions
-    self.submissions.count
+    submissions.count
   end
 
   private 

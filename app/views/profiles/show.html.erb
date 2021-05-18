@@ -15,7 +15,7 @@
   </div>
 
   <div class="col">
-    <h3>You took <%= @user.count_submissions %> exams</h3>
+    <h3>You took <%= pluralize(@user.count_submissions, 'exam') %></h3>
     <h3>All submissions</h3>
     <ul>
       <% @submissions.each do |submission| %>
