@@ -10,6 +10,7 @@ class ExamsController < ApplicationController
 
   # GET /exams/1 or /exams/1.json
   def show
+    @questions = @exam.questions
   end
 
   # GET /exams/new

@@ -6,20 +6,12 @@ class CategoriesController < ApplicationController
   # GET /categories or /categories.json
   def index
     @categories = Category.all
+    @category = Category.new
   end
 
   # GET /categories/1 or /categories/1.json
   def show
     @exams = @category.exams
-  end
-
-  # GET /categories/new
-  def new
-    @category = Category.new
-  end
-
-  # GET /categories/1/edit
-  def edit
   end
 
   # POST /categories or /categories.json

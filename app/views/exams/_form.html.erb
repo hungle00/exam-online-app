@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :category_id %>
-    <%= form.text_field :category_id %>
+    <%= form.label :category %>
+    <%= form.collection_select :category_id, Category.all, :id, :name %><br>
   </div>
 
   <div class="actions">
