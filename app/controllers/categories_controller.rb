@@ -1,7 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index]
-  before_action :require_admin, except: [:index, :show]
 
   # GET /categories or /categories.json
   def index
@@ -11,9 +9,11 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
+    @category = Category.friendly.find(params[:id])
     @exams = @category.exams
   end
 
+=begin
   # POST /categories or /categories.json
   def create
     @category = Category.new(category_params)
@@ -61,4 +61,5 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name)
     end
+=end
 end

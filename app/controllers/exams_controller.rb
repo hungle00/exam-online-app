@@ -1,7 +1,7 @@
 class ExamsController < ApplicationController
-  before_action :set_exam, only: %i[ show edit update destroy ]
+  #before_action :set_exam, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index]
-  before_action :require_admin, except: [:index, :show]
+  #before_action :require_admin, except: [:index, :show]
 
   # GET /exams or /exams.json
   def index
@@ -10,9 +10,11 @@ class ExamsController < ApplicationController
 
   # GET /exams/1 or /exams/1.json
   def show
+    @exam = Exam.find(params[:id])
     @questions = @exam.questions
   end
 
+=begin
   # GET /exams/new
   def new
     @exam = Exam.new
@@ -58,7 +60,6 @@ class ExamsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_exam
@@ -69,4 +70,5 @@ class ExamsController < ApplicationController
     def exam_params
       params.require(:exam).permit(:title, :category_id)
     end
+=end
 end
