@@ -1,0 +1,12 @@
+<h1>Editing Exam</h1>
+
+<%= render 'form', exam: @exam %>
+<div class="pt-4">
+	<h4>Add new question</h4>
+	<div class="card card-body">
+	  <%= render "questions/form" %>
+	</div>
+</div>
+
+<%= link_to 'Show', @exam %> |
+<%= link_to 'Back', exams_path %>

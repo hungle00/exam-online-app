@@ -3,10 +3,21 @@
   <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col-6 offset-3">
     <h1 class="my-3">All Categories</h1>
     <% @categories.each do |category| %>
-      <h3><%= link_to category.name, category %></h3>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to category.name, category %></h5>
+          <p class="card-text">Have <%= category.exams.count%> exams.</p>
+          <%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
     <% end %>
 
-    <%= link_to 'New Category', new_category_path %>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      New Category
+    </button>
+    <!-- Modal -->
+    <%= render 'modal' %>
   </div>
 </div>
 

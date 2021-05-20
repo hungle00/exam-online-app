@@ -7,13 +7,21 @@
     <tr>
       <th>Exam Title</th>
       <th>Total Score</th>
+      <th>Category</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
+    <%= render @exams %>
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Edit Category
+</button> |
+<%= link_to 'New Exam', new_exam_path, class: 'btn btn-primary btn-sm' %> |
 <%= link_to 'Back', categories_path %>
+<!-- Modal -->
+<%= render 'modal' %>

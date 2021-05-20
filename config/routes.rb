@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :exams
-  resources :categories
+  scope module: 'admin' do
+    resources :categories, only: [:create, :update, :destroy]
+    resources :exams, except: [:index, :show]
+    resources :users, only: [:index]
+  end
+  resources :categories, only: [:index, :show]
+  resources :exams, only: [:index, :show]
   root to: 'pages#home'
   get 'pages/home'
   resources :profiles, only: [:show]
