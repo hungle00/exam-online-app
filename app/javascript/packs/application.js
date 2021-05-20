@@ -11,6 +11,19 @@ import "channels"
 import 'bootstrap';
 import './stylesheets/application.scss'
 
+// test update option by js
+document.addEventListener("DOMContentLoaded", (event) => {
+  const form = document.querySelector(".option-form")
+  const btn = form.querySelector("button")
+  console.log(btn)
+  btn.addEventListener("click", event => {
+    event.preventDefault()
+    const option = form.querySelector("input[type=text]")
+    const correct = form.querySelector("input[type=checkbox]")
+    console.log(`Option ${option.value} is ${correct.checked}`)
+  })
+})
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

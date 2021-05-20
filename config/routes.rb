@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :exams, only: [:index, :show] do
     get 'take', on: :member
   end
+  resources :submissions, only: [:create]
+  
   root to: 'pages#home'
   get 'pages/home'
   resources :profiles, only: [:show]

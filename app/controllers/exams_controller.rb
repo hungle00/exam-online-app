@@ -1,7 +1,5 @@
 class ExamsController < ApplicationController
-  #before_action :set_exam, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index]
-  #before_action :require_admin, except: [:index, :show]
 
   # GET /exams or /exams.json
   def index
@@ -11,11 +9,12 @@ class ExamsController < ApplicationController
   # GET /exams/1 or /exams/1.json
   def show
     @exam = Exam.find(params[:id])
-    @questions = @exam.questions
   end
 
   def take
     @exam = Exam.find(params[:id])
-    @questions = @exam.questions
+    @questions = @exam.questions.includes(:options)
+
+    @submission = Submission.new
   end
 end

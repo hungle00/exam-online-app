@@ -36,9 +36,10 @@
       </tbody>
     </table>
     
-    <div class="col-md-4 col-sm-6 col-6 d-flex flex-row-reverse pr-5">
+    <div class="col-md-5 col-sm-6 col-6 d-flex flex-row-reverse pr-5">
       <%= link_to 'Edit Exam', edit_exam_path(@exam), class: "btn btn-info btn-sm" %><span>&nbsp;</span>
       <%= link_to 'Delete Exam', exams_path(@exam), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>	
+      <%= link_to "New Question", new_exam_question_path(@exam), class: 'btn btn-primary btn-sm' %>
     </div>
   <% else %>
     <h3><%= link_to "Take Exam", take_exam_path(@exam), class: "btn btn-info btn-sm" %></h2>
