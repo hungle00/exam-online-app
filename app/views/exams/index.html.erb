@@ -20,8 +20,8 @@
 <br>
 
 <% if current_user && current_user.is_admin %><!--Show new exam button only for admins-->
-  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      New Exam
+  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#examModal">
+    New Exam
   </button>
   <%= render 'admin/exams/modal' %>
 <% end %>

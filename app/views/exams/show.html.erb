@@ -21,13 +21,13 @@
     </div>
     <% @exam.questions.each do |question| %>
       <div class="card card-body">
-        <h4 class="card-title"><% question.title %></h4>
+        <h4 class="card-title"><%= question.title %></h4>
         <h6 class="card-subtitle mb-2 text-muted">
           Score:<small><%= question.score %></small>
         </h6>
         <p>
           <a class="btn btn-info btn-sm" data-bs-toggle="collapse" href="#collapseExample-<%= question.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Add option
+            Options
           </a> |
           <%= link_to 'Edit', edit_exam_question_path(@exam, question), class: "btn btn-primary btn-sm" %> | 
           <%= link_to 'Delete', [@exam, question], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>

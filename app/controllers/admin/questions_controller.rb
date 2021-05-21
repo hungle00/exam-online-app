@@ -44,6 +44,8 @@ class Admin::QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:title, :score, :exam_id)
+      params.require(:question).permit(
+        :title, :score, :exam_id,
+        options_attributes: [:id, :content, :is_correct, :_destroy])
     end
 end

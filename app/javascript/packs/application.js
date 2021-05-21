@@ -13,14 +13,13 @@ import './stylesheets/application.scss'
 
 // test update option by js
 document.addEventListener("DOMContentLoaded", (event) => {
-  const form = document.querySelector(".option-form")
-  const btn = form.querySelector("button")
-  console.log(btn)
-  btn.addEventListener("click", event => {
+  const template = document.getElementsByTagName("template")[0]
+  const addBtn = document.querySelector(".add-option")
+  //console.log(template.innerHTML)
+  addBtn.addEventListener("click", event => {
     event.preventDefault()
-    const option = form.querySelector("input[type=text]")
-    const correct = form.querySelector("input[type=checkbox]")
-    console.log(`Option ${option.value} is ${correct.checked}`)
+    const option = template.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())  // for uniq option form, can use random() instead
+    addBtn.insertAdjacentHTML('beforebegin', option)
   })
 })
 
