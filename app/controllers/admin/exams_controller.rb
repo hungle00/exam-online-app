@@ -3,11 +3,6 @@ class Admin::ExamsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_admin
 
-  # GET /exams/new
-  def new
-    @exam = Exam.new
-  end
-
   # GET /exams/1/edit
   def edit
   end
@@ -16,14 +11,10 @@ class Admin::ExamsController < ApplicationController
   def create
     @exam = Exam.new(exam_params)
 
-    respond_to do |format|
-      if @exam.save
-        format.html { redirect_to @exam, notice: "Exam was successfully created." }
-        format.json { render :show, status: :created, location: @exam }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @exam.errors, status: :unprocessable_entity }
-      end
+    if @exam.save
+      redirect_to @exam, notice: "Exam was successfully created."
+    else
+      redirect_back fallback_location: exams_path, status: :unprocessable_entity
     end
   end
 
@@ -43,10 +34,7 @@ class Admin::ExamsController < ApplicationController
   # DELETE /exams/1 or /exams/1.json
   def destroy
     @exam.destroy
-    respond_to do |format|
-      format.html { redirect_to exams_url, notice: "Exam was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to exams_url, notice: "Exam was successfully destroyed."
   end
 
   private

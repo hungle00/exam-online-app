@@ -7,13 +7,13 @@
     <div class="row">
       <% question.options.each do |option| %>
       	<div class="col-md-5 my-1 ml-1 text-center border border-light grey-back pt-1">
-					<h3>
-						<span class="btn btn-primary btn-sm option-btn"><!--Select option as radio button-->
+				  <h3>
+					  <span class="btn btn-primary btn-sm option-btn"><!--Select option as radio button-->
               <label><%= option.content %></label>
               <input type="radio"><br>
-						</span>
-					</h3>
-				</div>
+					  </span>
+				  </h3>
+			  </div>
       <% end %>
     </div>
   </div>

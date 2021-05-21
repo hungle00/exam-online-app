@@ -4,11 +4,13 @@ class ExamsController < ApplicationController
   # GET /exams or /exams.json
   def index
     @exams = Exam.all
+    @exam = Exam.new
   end
 
   # GET /exams/1 or /exams/1.json
   def show
     @exam = Exam.find(params[:id])
+    @question = Question.new
   end
 
   def take

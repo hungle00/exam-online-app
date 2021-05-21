@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   scope module: 'admin' do
     resources :categories, only: [:create, :update, :destroy]
-    resources :exams, except: [:index, :show] do
-      resources :questions, except: [:index]
+    resources :exams, except: [:index, :show, :new] do
+      resources :questions, except: [:index, :show, :new]
     end
     resources :users, only: [:index]
   end

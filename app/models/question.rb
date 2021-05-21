@@ -3,5 +3,5 @@ class Question < ApplicationRecord
   has_many :options
 
   validates :title, presence: true, length: {minimum: 3, maximum: 60}
-	validates :score, presence: true
+  validates :score, presence: true
 end
