@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
   scope module: 'admin' do
     resources :categories, only: [:create, :update, :destroy]
-    resources :exams, except: [:index, :show]
+    resources :exams, except: [:index, :show, :new] do
+      resources :questions, except: [:index, :show, :new]
+    end
     resources :users, only: [:index]
   end
+
   resources :categories, only: [:index, :show]
-  resources :exams, only: [:index, :show]
+  resources :exams, only: [:index, :show] do
+    get 'take', on: :member
+  end
+  resources :submissions, only: [:create]
+  
   root to: 'pages#home'
   get 'pages/home'
   resources :profiles, only: [:show]

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row mt-4 text-center">
+  <h2><%= @exam.title %></h2> 
+  <h3><i class="mb-3"> <%= @exam.category.name %> </i></h3>
+
+  <div class="col-md-5 offset-md-1 col-sm-5 offset-sm-1 col-5 offset-1 border border-primary alert alert-primary">
+    <h4>Number of questions</h4>
+    <span class="display-3"><%= @exam.questions.count %></span>
+  </div>
+
+  <div class="col-md-5 col-sm-5 col-5 border border-left-0 border-primary alert alert-primary">
+    <h4>Total Score</h4>
+    <span class="display-3"><%= @exam.total_score %></span>
+  </div>
+
+  <!-- test submission form -->
+  <div class="list-group mt-2">
+    <%= form_for @submission do |f| %>
+      <h3 class="text-center my-2">Questions:</h3>
+      <%= render @questions %>
+      
+      <%= f.hidden_field :exam_id, value: @exam.id %>
+	    <%= f.hidden_field :user_id, value: current_user.id %>
+      
+      <div class="form-group text-center mt-4">
+        <%= f.submit "Finish Quiz", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>
