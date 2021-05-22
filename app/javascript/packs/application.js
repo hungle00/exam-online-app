@@ -11,17 +11,41 @@ import "channels"
 import 'bootstrap';
 import './stylesheets/application.scss'
 
-// test update option by js
-document.addEventListener("DOMContentLoaded", (event) => {
-  const template = document.getElementsByTagName("template")[0]
-  const addBtn = document.querySelector(".add-option")
-  //console.log(template.innerHTML)
-  addBtn.addEventListener("click", event => {
-    event.preventDefault()
-    const option = template.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())  // for uniq option form, can use random() instead
-    addBtn.insertAdjacentHTML('beforebegin', option)
-  })
-})
+window.show = function(event) {
+  event.preventDefault();
+  let p = event.target.parentElement
+  const updateForm = p.querySelector(".d-none")
+  const question = p.querySelector(".card")
+  //console.log(question)
+  updateForm.classList.remove("d-none");
+  question.classList.add("d-none")
+
+}
+
+window.addOption = function(event) {
+  event.preventDefault();   
+  let p = event.target.parentElement
+  const template = p.querySelector("template");
+  const option = template.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())  // for uniq option form, can use random() instead
+  p.insertAdjacentHTML('beforebegin', option)
+  console.log(template)
+}
+
+window.removeOption = function(event) {
+  event.preventDefault();  
+  let wrapper = event.target.closest(".nested-fields")
+  console.log(wrapper)
+
+  // New records are simply removed from the page
+  if (wrapper.dataset.newRecord == "true") {
+    wrapper.remove()
+  
+  // Existing records are hidden and flagged for deletion
+  } else {
+    wrapper.querySelector("input[name*='_destroy']").value = 1
+    wrapper.style.display = 'none'
+  }
+}
 
 Rails.start()
 Turbolinks.start()

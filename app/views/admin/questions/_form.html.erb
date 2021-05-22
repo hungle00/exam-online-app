@@ -33,9 +33,8 @@
       <%= render "admin/options/form", f: option %>
     <% end %>
 
-    <div class="mb-3 add-option">
-      <%= link_to "Add options", "#", class: " btn btn-outline-primary" %>
-    </div>
+    <a href="#" onclick="addOption(event)" class="btn btn-info btn-sm mb-2">Add Option</a>
+
   </div>
 
   <div class="actions">

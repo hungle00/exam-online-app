@@ -25,28 +25,26 @@
         <h6 class="card-subtitle mb-2 text-muted">
           Score:<small><%= question.score %></small>
         </h6>
-        <p>
-          <a class="btn btn-info btn-sm" data-bs-toggle="collapse" href="#collapseExample-<%= question.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Options
-          </a> |
-          <%= link_to 'Edit', edit_exam_question_path(@exam, question), class: "btn btn-primary btn-sm" %> | 
+        <div> 
+          <a href="#" onclick="show(event)" class="btn btn-info btn-sm">Edit</a> |
           <%= link_to 'Delete', [@exam, question], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
-
-          <div class="collapse" id="collapseExample-<%= question.id %>">
-            <%= render 'admin/questions/question', question: question %>
+          <%= render 'admin/questions/question', question: question %>
+          <div class="d-none" id="collapseExample-<%= question.id %>">
+            <%= render 'admin/questions/update_form', question: question %>
           </div>
-        </p>
+        </div>
       </div>
     <% end %>
 
     <div>
-    <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        New Question
-      </button>
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseQuestion" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Add question
+      </a> 
+      <div class="collapse" id="collapseQuestion">
+        <%= render 'admin/questions/form', :question => @question %>
+      </div>
     </div>
-    <!-- Modal -->
-    <%= render 'admin/questions/modal' %>
+
 
   <% else %>
     <h3><%= link_to "Take Exam", take_exam_path(@exam), class: "btn btn-info btn-sm" %></h2>

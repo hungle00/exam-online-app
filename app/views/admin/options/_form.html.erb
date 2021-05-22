@@ -1,13 +1,13 @@
-<%= content_tag :div, data: { new_record: f.object.new_record? } do %>
+<%= content_tag :div, data: { new_record: f.object.new_record? }, class: "nested-fields col-6" do %>
     <div class="form-group">
       <%= f.label :content %>
       <%= f.text_field :content, class: 'form-control' %>
 
       <%= f.check_box :is_correct, class:"form-check-input" %>
-      <label class="form-check-label">Set Answer</label>   |  
+      <label class="form-check-label">Set Answer</label> |  
 
-      <small class="ml-4"><%= link_to "Remove", "#" %></small>
+      <small class="ml-4"><a href="#" onclick="removeOption(event)">Remove</a></small>
     </div>
     
-    <%= f.hidden_field :_destroy %>
+  <%= f.hidden_field :_destroy %>
 <% end %>
