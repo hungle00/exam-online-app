@@ -2,7 +2,7 @@ class Admin::QuestionsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_admin
   before_action :set_exam
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:edit, :update, :destroy]
 
 
   def edit
@@ -44,6 +44,8 @@ class Admin::QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:title, :score, :exam_id)
+      params.require(:question).permit(
+        :title, :score, :exam_id,
+        options_attributes: [:id, :content, :is_correct, :_destroy])
     end
 end

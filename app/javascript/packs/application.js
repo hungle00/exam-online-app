@@ -11,18 +11,41 @@ import "channels"
 import 'bootstrap';
 import './stylesheets/application.scss'
 
-// test update option by js
-document.addEventListener("DOMContentLoaded", (event) => {
-  const form = document.querySelector(".option-form")
-  const btn = form.querySelector("button")
-  console.log(btn)
-  btn.addEventListener("click", event => {
-    event.preventDefault()
-    const option = form.querySelector("input[type=text]")
-    const correct = form.querySelector("input[type=checkbox]")
-    console.log(`Option ${option.value} is ${correct.checked}`)
-  })
-})
+window.show = function(event) {
+  event.preventDefault();
+  let p = event.target.parentElement
+  const updateForm = p.querySelector(".d-none")
+  const question = p.querySelector(".card")
+  //console.log(question)
+  updateForm.classList.remove("d-none");
+  question.classList.add("d-none")
+
+}
+
+window.addOption = function(event) {
+  event.preventDefault();   
+  let p = event.target.parentElement
+  const template = p.querySelector("template");
+  const option = template.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())  // for uniq option form, can use random() instead
+  p.insertAdjacentHTML('beforebegin', option)
+  console.log(template)
+}
+
+window.removeOption = function(event) {
+  event.preventDefault();  
+  let wrapper = event.target.closest(".nested-fields")
+  console.log(wrapper)
+
+  // New records are simply removed from the page
+  if (wrapper.dataset.newRecord == "true") {
+    wrapper.remove()
+  
+  // Existing records are hidden and flagged for deletion
+  } else {
+    wrapper.querySelector("input[name*='_destroy']").value = 1
+    wrapper.style.display = 'none'
+  }
+}
 
 Rails.start()
 Turbolinks.start()

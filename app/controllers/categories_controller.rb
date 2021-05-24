@@ -11,5 +11,6 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.friendly.find(params[:id])
     @exams = @category.exams
+    @exam = Exam.new
   end
 end
