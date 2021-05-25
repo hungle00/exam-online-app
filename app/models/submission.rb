@@ -3,5 +3,5 @@ class Submission < ApplicationRecord
   belongs_to :exam
 
   has_many :question_submissions, dependent: :destroy
-	accepts_nested_attributes_for :question_submissions, reject_if: proc { |att| att['option'].blank? }
+  accepts_nested_attributes_for :question_submissions, reject_if: proc { |att| att['option'].blank? }
 end

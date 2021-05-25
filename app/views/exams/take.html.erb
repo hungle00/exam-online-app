@@ -19,9 +19,9 @@
     <%= form_for @submission do |f| %>
       <h3 class="text-center my-2">Questions:</h3>
       <% @questions.each do |question| %>
-				<%= f.fields_for :question_submissions, QuestionSubmission.new do |qs| %><!--Inner form for quest_submissions-->
+        <%= f.fields_for :question_submissions, QuestionSubmission.new do |qs| %>
           <%= render 'questions/question', question: question, qs: qs %>
-				<% end %>
+        <% end %>
       <% end %>
       
       <%= f.hidden_field :exam_id, value: @exam.id %>

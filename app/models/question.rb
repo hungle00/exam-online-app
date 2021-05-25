@@ -5,4 +5,8 @@ class Question < ApplicationRecord
 
   validates :title, presence: true, length: {minimum: 3, maximum: 60}
   validates :score, numericality: { greater_than: 9, less_than: 16, only_integer: true }
+
+  def answer
+    options.select { |option| option.is_correct? } 
+  end
 end
