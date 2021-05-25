@@ -20,13 +20,16 @@
       <%= link_to 'Delete Exam', exams_path(@exam), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
     </div>
     <% @exam.questions.each do |question| %>
-      <div class="card card-body">
+      <div class="card card-body mb-3 bg-light">
         <h4 class="card-title"><%= question.title %></h4>
         <h6 class="card-subtitle mb-2 text-muted">
           Score:<small><%= question.score %></small>
         </h6>
         <% if question.options.size < 2 %>
           <p class="alert alert-danger" role="alert">You must add at least 2 options<p>
+        <% end %>
+        <% unless question.options.pluck(:is_correct).include?(true) %>
+          <p class="alert alert-danger" role="alert">You must set at least 1 correct option<p>
         <% end %>
         <div> 
           <a href="#" onclick="show(event)" class="btn btn-info btn-sm">Edit</a> |
