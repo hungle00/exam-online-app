@@ -11,6 +11,16 @@
 #q = Question.create!(title: "What is mf stand for?", score: 10, exam: e)
 #Option.create!(content: "Mezzo forte", is_correct: true, question: q)
 #Option.create!(content: "Mezzo piano", question: q)
-Question.create!(title: "What is sonata form?", score: 20, exam: Exam.first)
-
-Submission.create!(score: 20, exam: Exam.first, user: User.last)
+#Question.create!(title: "What is sonata form?", score: 20, exam: Exam.first)
+#Submission.create!(score: 20, exam: Exam.first, user: User.last)
+ActiveRecord::Base.transaction do
+  c = Category.create!(name: 'Literature')
+  e = Exam.create!(title: 'J.R.R.Tolkien', category: c)
+  #quote = [:hamlet_quote, :romeo_and_juliet_quote, :king_richard_iii_quote]
+  12.times do 
+    q = Question.create!(title: Faker::Fantasy::Tolkien.poem, score: rand(10..15), exam: e)
+    2.times do 
+      Option.create!(content: Faker::Fantasy::Tolkien.character, question: q, is_correct: [true, false].sample)
+    end
+  end
+end

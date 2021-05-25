@@ -75,6 +75,8 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.10.0)
+    faker (2.18.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.0)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
@@ -195,6 +197,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   devise (~> 4.7, >= 4.7.1)
+  faker
   friendly_id (~> 5.4.0)
   jbuilder (~> 2.7)
   listen (~> 3.3)
