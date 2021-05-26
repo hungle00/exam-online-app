@@ -1,0 +1,12 @@
+          <p class="alert alert-warning" role="alert">Question has more than 1 answer<p>
+          <% question.options.each do |option| %>  
+            <div class="col-md-6 my-1 text-center border border-light grey-back pt-1">
+              <h3>
+                <span class="btn btn-primary btn-sm option-btn">
+                  <%= qs.check_box :options, {:multiple => true}, option.content %>
+                  <%= qs.label :options, option.content, value: option.content %>
+                </span>
+              </h3>
+            </div>
+            <%= qs.hidden_field :question_id, value: question.id %>
+          <% end %>

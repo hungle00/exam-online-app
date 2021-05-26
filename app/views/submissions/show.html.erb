@@ -20,7 +20,7 @@
       <tr>
         <td><strong><%= question.title %></strong></td>
         <td><%= question.score %></td>
-        <td><%= question.answer[0].content %></td>
+        <td><%= question.answers.pluck(:content) %></td>
         <td></td>
      </tr> 
     <% end %>

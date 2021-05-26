@@ -11,14 +11,24 @@ import "channels"
 import 'bootstrap';
 import './stylesheets/application.scss'
 
+// test jquery
+function readyFn() {
+  console.log("Hello World!")
+};
+$(document).on('turbolinks:load', readyFn)
+
 window.show = function(event) {
   event.preventDefault();
-  let p = event.target.parentElement
-  const updateForm = p.querySelector(".d-none")
-  const question = p.querySelector(".card")
-  //console.log(question)
-  updateForm.classList.remove("d-none");
-  question.classList.add("d-none")
+  let p = event.target.closest(".card")
+  const updateForm = p.querySelector(".question-form")
+  const question = p.querySelector(".options")
+  if(updateForm.classList.contains("d-none")) {
+    updateForm.classList.remove("d-none");
+    question.classList.add("d-none");
+  } else {
+    updateForm.classList.add("d-none");
+    question.classList.remove("d-none");
+  }
 
 }
 
@@ -27,8 +37,7 @@ window.addOption = function(event) {
   let p = event.target.parentElement
   const template = p.querySelector("template");
   const option = template.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())  // for uniq option form, can use random() instead
-  p.insertAdjacentHTML('beforebegin', option)
-  console.log(template)
+  event.target.insertAdjacentHTML('beforebegin', option)
 }
 
 window.removeOption = function(event) {

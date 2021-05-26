@@ -13,7 +13,7 @@ class SubmissionsController < ApplicationController
       question_submissions.each do |qs|
         qs.question.options.each do |option|
           logger.debug "Option is #{option.content} - #{option.is_correct}"
-          if option.is_correct && option.content == qs.option
+          if option.is_correct && option.content == qs.options.first
             total_score += qs.question.score
           end
         end
@@ -31,6 +31,6 @@ class SubmissionsController < ApplicationController
     def submission_params
       params.require(:submission).permit(
         :user_id, :exam_id,
-        question_submissions_attributes: [:question_id, :option])
+        question_submissions_attributes: [:question_id, :options])
     end
 end

@@ -6,7 +6,9 @@
       <%= f.check_box :is_correct, class:"form-check-input" %>
       <label class="form-check-label">Set Answer</label> |  
 
-      <small class="ml-4"><a href="#" onclick="removeOption(event)">Remove</a></small>
+      <small class="ml-4">
+        <a href="#" onclick="removeOption(event)"><span class="material-icons">clear</span></a>
+      </small>
     </div>
     
   <%= f.hidden_field :_destroy %>
