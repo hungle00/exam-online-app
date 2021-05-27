@@ -23,8 +23,9 @@
               <span class="material-icons">notifications</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li class="dropdown-item pb-2 border-bottom"><i>Notificatons</i></li>
               <% current_user.notifications.each do |notification| %>
-                <li class="dropdown-item" ><%= notification.content %></li>
+                <%= render 'layouts/notification', notification: notification %>
               <% end %>
             </ul>
           </li>

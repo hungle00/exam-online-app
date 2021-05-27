@@ -19,20 +19,6 @@ $(document).on('turbolinks:load', () => {
   readyFn();
 })*/
 
-
-
-window.addEventListener("load", () => {
-  const options = document.querySelectorAll(".report");
-  options.forEach((option) => {
-    option.addEventListener("click", (event) => {
-      event.preventDefault();
-      console.log(option.querySelectorAll("li"))
-      //const {backgroundColor, textColor} = element.dataset;
-      //paintIt(element, backgroundColor, textColor);
-    });
-  });
-});
-
 window.show = function(event) {
   event.preventDefault();
   let p = event.target.closest(".card")

@@ -20,7 +20,12 @@
       <tr>
         <td><strong><%= question.title %></strong></td>
         <td><%= question.score %></td>
-        <td><%= question.answers.pluck(:content) %></td>
+        <td><%= render_answers(question.answers.pluck(:content)) %></td>
+        <% if question.answers.pluck(:content) == @answers[question.id] %>
+          <td class="text-success"><strong><%= render_answers(@answers[question.id]) %></strong></td>
+        <% else %>
+          <td class="text-danger"><strong><%= render_answers(@answers[question.id]) %></strong></td>
+        <% end %>
         <td>
           <a data-bs-toggle="modal" data-bs-target="#reportModal">
             <span class="material-icons">report_problem</span>
