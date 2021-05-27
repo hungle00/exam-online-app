@@ -1,20 +1,27 @@
-  <div class="card">
-    <div class="card-header bg-info">
+  <div class="card mb-3 border border-2">
+    <div class="card-header bg-info position-relative">
       <h3><%= question.title %></h3>
+      <p class="position-absolute top-0 end-0">
+        <span class="material-icons">more_horiz</span>
+      </p>
     </div>
     <div class="card-body">
       <h4 class="card-text">Score: <%= question.score %></p>
       <div class="row">
-        <% question.options.each do |option| %>
-          <div class="col-md-5 my-1 ml-1 text-center border border-light grey-back pt-1">
-            <h3>
-              <span class="btn btn-primary btn-sm option-btn">
-                <%= qs.radio_button :option, option.content %>
-                <%= qs.label :option, option.content, value: option.content %>
-              </span>
-            </h3>
-          </div>
-          <%= qs.hidden_field :question_id, value: question.id %>
+        <% if question.options.pluck(:is_correct).count(true) > 1 %>
+          <%= render 'questions/multi_options', question: question, qs: qs %>
+        <% else %>
+          <% question.options.each do |option| %>
+            <div class="col-md-6 my-1 text-center border border-light grey-back pt-1">
+              <h3>
+                <span class="btn btn-primary btn-sm option-btn">
+                  <%= qs.radio_button :options, option.content %>
+                  <%= qs.label :options, option.content, value: option.content %>
+                </span>
+              </h3>
+            </div>
+            <%= qs.hidden_field :question_id, value: question.id %>
+          <% end %>
         <% end %>
       </div>
     </div>

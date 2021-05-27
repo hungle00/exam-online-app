@@ -3,8 +3,18 @@ class ExamsController < ApplicationController
 
   # GET /exams or /exams.json
   def index
-    @exams = Exam.all
+    @exams = Exam.includes(:category)
     @exam = Exam.new
+
+    @exams = @exams.search(params[:search])
+
+    if params[:order] && params[:order] == "Sort by title"
+      @exams = @exams.sort_by_title
+    elsif params[:order] && params[:order] == "Sort by score"
+      @exams = @exams.sort_by_score.reverse
+    else
+      @exams = @exams
+    end
   end
 
   # GET /exams/1 or /exams/1.json

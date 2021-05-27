@@ -22,7 +22,7 @@
   </div>
 
   <h4>Options</h4>
-  <div>
+  <div class="row">
     <template>
       <%= f.fields_for :options, Option.new, child_index: 'NEW_RECORD' do |option| %>
         <%= render "admin/options/form", f: option %>
