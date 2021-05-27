@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   has_many :notifications
   has_many :submissions
+  has_many :reports
 
   def count_submissions
     submissions.count

@@ -3,6 +3,7 @@ class SubmissionsController < ApplicationController
 
   def show
     @submission = Submission.find(params[:id])
+    @report = Report.new
   end
   
   def create
