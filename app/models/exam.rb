@@ -3,6 +3,8 @@ class Exam < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :submissions
 
+  after_create :send_notifications_to_users
+
   scope :sort_by_title, -> { order(title: :asc) }
   scope :sort_by_score, -> { all.sort_by(&:total_score) }
 
@@ -17,4 +19,16 @@ class Exam < ApplicationRecord
       all
     end
   end
+
+  def top_score
+    submissions.order('score DESC').limit(3)
+  end
+
+  private
+    def send_notifications_to_users
+      User.all.each do |user|
+        Notification.create!(content: "New exam is created", user: user)
+        ActionCable.server.broadcast "notifications.#{ user.id }", { message: "new notification" }
+      end
+    end
 end

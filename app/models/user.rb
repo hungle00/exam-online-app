@@ -11,9 +11,9 @@ class User < ApplicationRecord
   before_create :validate_username
   has_one_attached :avatar
 
-  has_many :notifications
-  has_many :submissions
-  has_many :reports
+  has_many :notifications, dependent: :destroy
+  has_many :submissions, dependent: :destroy
+  has_many :reports, dependent: :destroy
 
   def count_submissions
     submissions.count

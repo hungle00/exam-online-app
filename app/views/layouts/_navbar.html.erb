@@ -19,14 +19,9 @@
       <ul class="navbar-nav ms-auto">
         <% if current_user %>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="material-icons">notifications</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li class="dropdown-item pb-2 border-bottom"><i>Notificatons</i></li>
-              <% current_user.notifications.each do |notification| %>
-                <%= render 'layouts/notification', notification: notification %>
-              <% end %>
+            <%= link_to "Notification", notifications_path, class: "nav-link dropdown-toggle", remote: true, id: "navbarDropdown", role:"button", data: { bs_toggle: "dropdown" } %>
+            <ul class="dropdown-menu dropdown-menu-end px-2" aria-labelledby="navbarDropdown" id="notifications">
+              <li class="dropdown-item pb-2 border-bottom"><i>Notificatons ...</i></li>
             </ul>
           </li>
           <li class="nav-item dropdown px-4">
