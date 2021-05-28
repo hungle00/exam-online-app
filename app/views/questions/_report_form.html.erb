@@ -1,0 +1,40 @@
+<div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Report Quesiton</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model: report) do |form| %>
+          <% if report.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(report.errors.count, "error") %> prohibited this exam from being saved:</h2>
+
+              <ul>
+                <% report.errors.each do |error| %>
+                  <li><%= report.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <% Report::CONTENTS.each do |content| %>
+            <p>
+              <%= form.radio_button :content, content %>
+              <%= form.label :content, content, value: content %>
+            </p>
+          <% end %>
+
+          <%= form.hidden_field :question_id, value: question.id %>
+
+          <div class="actions">
+            <%= form.submit class: "btn btn-primary mt-2"%>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+

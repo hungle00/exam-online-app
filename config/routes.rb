@@ -4,14 +4,18 @@ Rails.application.routes.draw do
     resources :exams, except: [:index, :show, :new] do
       resources :questions, except: [:index, :show, :new]
     end
-    resources :users, only: [:index]
+    get 'dashboard/users'
+    get 'dashboard/reports'
+    get 'dashboard/stats'
   end
 
   resources :categories, only: [:index, :show]
   resources :exams, only: [:index, :show] do
     get 'take', on: :member
   end
+  
   resources :submissions, only: [:create, :show]
+  resources :reports, only: [:create, :destroy]
   
   root to: 'pages#home'
   get 'pages/home'

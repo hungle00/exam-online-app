@@ -1,6 +1,7 @@
 class Question < ApplicationRecord
   belongs_to :exam
   has_many :options, dependent: :destroy
+  has_many :reports, dependent: :destroy
   accepts_nested_attributes_for :options, reject_if: :all_blank, allow_destroy: true
 
   validates :title, presence: true, length: {minimum: 3, maximum: 60}

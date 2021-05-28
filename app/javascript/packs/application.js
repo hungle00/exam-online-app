@@ -12,10 +12,12 @@ import 'bootstrap';
 import './stylesheets/application.scss'
 
 // test jquery
-function readyFn() {
+/*function readyFn() {
   console.log("Hello World!")
 };
-$(document).on('turbolinks:load', readyFn)
+$(document).on('turbolinks:load', () => {
+  readyFn();
+})*/
 
 window.show = function(event) {
   event.preventDefault();
