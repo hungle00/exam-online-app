@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
   scope module: 'admin' do
     resources :categories, only: [:create, :update, :destroy]
     resources :exams, except: [:index, :show, :new] do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   
   resources :submissions, only: [:create, :show]
   resources :reports, only: [:create, :destroy]
+  resources :notifications, only: [:index]
   
   root to: 'pages#home'
   get 'pages/home'
