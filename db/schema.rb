@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_021906) do
+ActiveRecord::Schema.define(version: 2021_05_31_032040) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_021906) do
     t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "time"
     t.index ["category_id"], name: "index_exams_on_category_id"
   end
 
@@ -120,6 +121,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_021906) do
     t.integer "exam_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "response_time"
     t.index ["exam_id"], name: "index_submissions_on_exam_id"
     t.index ["user_id"], name: "index_submissions_on_user_id"
   end

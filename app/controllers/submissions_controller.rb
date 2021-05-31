@@ -32,7 +32,7 @@ class SubmissionsController < ApplicationController
 
     def submission_params
       params.require(:submission).permit(
-        :user_id, :exam_id,
+        :user_id, :exam_id, :response_time,
         question_submissions_attributes: [:question_id, :options])
     end
 end
