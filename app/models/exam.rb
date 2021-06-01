@@ -1,7 +1,12 @@
 class Exam < ApplicationRecord
   belongs_to :category
   has_many :questions, dependent: :destroy
-  has_many :submissions
+  has_many :submissions, dependent: :destroy
+
+  # set default 60 second if null, then convert minute to second
+  before_save do 
+    time.nil? ? self.time = 60 : self.time = time * 60 
+  end
 
   after_create :send_notifications_to_users
 
@@ -31,4 +36,5 @@ class Exam < ApplicationRecord
         ActionCable.server.broadcast "notifications.#{ user.id }", { message: "new notification" }
       end
     end
+
 end

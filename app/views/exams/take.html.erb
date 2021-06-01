@@ -16,7 +16,7 @@
     <span class="display-3"><%= @exam.total_score %></span>
   </div>
 
-  <div id="timer"><%= @exam.time * 60 %></div>
+  <h4 class="text-danger">Remain time <span id="timer"><%= @exam.time / 60 %></span> minutes!</h4>
 
   <!-- submission form -->
   <div class="list-group col-10 offset-1 mt-2">
@@ -29,7 +29,7 @@
       <% end %>
       
       <%= f.hidden_field :exam_id, value: @exam.id %>
-      <%= f.hidden_field :response_time, value: @exam.time * 60 %>
+      <%= f.hidden_field :response_time, value: 0 %>
       
       <div class="form-group text-center mt-4">
         <%= f.submit "Finish Quiz", class: "btn btn-success" %>

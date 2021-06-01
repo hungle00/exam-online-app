@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="mt-3 text-center">Results</h1>
-<p>Total Score: <%= @submission.score %></p>
-<p>Exam title: <%= @submission.exam.title %></p>
+<h2 class="mt-3 text-center">Exam Result</h2>
+<div class="b-3">
+  <p class="lead">Exam: <%= @submission.exam.title %></p>
+  <p>You got <%= @submission.score %> scores</p>
+  <p>Finished in <%= @submission.response_time %> seconds</p>
+</div>
+
 
  <table class="table table-hover mt-4">
   <thead>
