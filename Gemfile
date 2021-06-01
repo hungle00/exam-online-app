@@ -49,3 +49,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'friendly_id', '~> 5.4.0'
 gem 'faker'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
+gem 'omniauth-rails_csrf_protection'
