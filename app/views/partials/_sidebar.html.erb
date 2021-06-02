@@ -1,0 +1,25 @@
+            <div class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3">
+                <div class="bg-light border rounded-3 p-1 h-100 sticky-top">
+                    <h3 class="d-none d-sm-block text-muted">Admin</h3>
+                    <ul class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate">
+                        <li>
+                            <a href="#" class="nav-link px-2 text-truncate">
+                                <span class="material-icons">home</span>
+                                <span class="d-none d-sm-inline">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to '<span class="material-icons">analytics</span> Stats'.html_safe,
+                                dashboard_stats_path, class: 'nav-link px-2 text-truncate' %>
+                        </li>
+                        <li>
+                            <%= link_to '<span class="material-icons">people</span> Users'.html_safe,
+                                dashboard_users_path, class: 'nav-link px-2 text-truncate' %>
+                        </li>
+                        <li>
+                            <%= link_to '<span class="material-icons">report</span> Reports'.html_safe,
+                                dashboard_reports_path, class: 'nav-link px-2 text-truncate' %>
+                        </li>
+                    </ul>
+                </div>
+            </div>

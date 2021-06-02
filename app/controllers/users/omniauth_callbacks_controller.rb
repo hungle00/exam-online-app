@@ -3,7 +3,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth = request.env["omniauth.auth"]
     logger.debug auth.info
     #logger.debug auth.credentials
-    @user = User.github_auth(auth)
+    @user = User.omniauth(auth)
+    return failure unless @user.persisted?
+
+    sign_in_and_redirect @user
+  end
+
+  def twitter
+    auth = request.env["omniauth.auth"]
+    #logger.debug auth
+    @user = User.omniauth(auth)
     return failure unless @user.persisted?
 
     sign_in_and_redirect @user

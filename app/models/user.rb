@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[github twitter]
 
   extend FriendlyId
   friendly_id :username, use: :slugged
@@ -15,8 +16,7 @@ class User < ApplicationRecord
   has_many :submissions, dependent: :destroy
   has_many :reports, dependent: :destroy
 
-
-  def self.github_auth(auth)
+  def self.omniauth(auth)
     username = auth.info.nickname
     user = find_or_create_by!(username: username) do |u|
       u.username = username
