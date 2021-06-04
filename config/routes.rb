@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   
   root to: 'pages#home'
   get 'pages/home'
-  resources :profiles, only: [:show]
-  devise_for :users
+  #resources :profiles, only: [:show]
+  get '/user/:id', to: 'user#show', as: 'profile'
+  get '/user', to: 'user#index', as: 'top_users'
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

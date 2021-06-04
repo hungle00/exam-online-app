@@ -2,6 +2,8 @@ class Admin::DashboardController < ApplicationController
   before_action :authenticate_user!
   before_action :require_admin
   
+  layout "admin"
+
   def users
     @users = User.order(:created_at)
   end
