@@ -9,7 +9,7 @@ class Admin::DashboardController < ApplicationController
   end
 
   def stats
-  
+    @exams = Exam.order(:created_at)
   end
 
   def reports

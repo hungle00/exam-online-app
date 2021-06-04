@@ -1,1 +1,33 @@
 <h2>Stats</h2>
+
+<table class="table table-hover mt-4">
+  <thead>
+    <tr>
+      <th>Exam Title</th>
+      <th>Total Score</th>
+      <th>Submissions</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exams.each do |exam| %>
+      <tr>
+      <td><%= exam.title %></td>
+      <td><%= exam.total_score %></td>
+      <td><%= exam.submissions.count %></td>
+    </tr> 
+    <% end %>
+  </tbody>
+</table>
+
+<div class="chart px-4 py-4">
+  <h3>Submissions by day</h3>
+  <%= line_chart Submission.group_by_day(:created_at).count %>
+</div>
+
+<div class="chart px-4 py-4">
+  <h3>Submissions by score</h3>
+  <%= pie_chart Submission.order_by_range %>
+</div>
+
