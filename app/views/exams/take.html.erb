@@ -2,38 +2,44 @@
 
 <p id="notice"><%= notice %></p>
 
-<div class="row mt-4 text-center">
-  <h2><%= @exam.title %></h2> 
-  <h3><i class="mb-3"> <%= @exam.category.name %> </i></h3>
+<div class="row mt-4">
+  <div class="col-lg-10 col-md-20 row">
+    <h2><%= @exam.title %></h2> 
+    <h3><i class="mb-3"> <%= @exam.category.name %> </i></h3>
 
-  <div class="col-md-5 offset-md-1 col-sm-5 offset-sm-1 col-5 offset-1 border border-primary alert alert-primary">
-    <h4>Number of questions</h4>
-    <span class="display-3"><%= @exam.questions.count %></span>
-  </div>
-
-  <div class="col-md-5 col-sm-5 col-5 border border-left-0 border-primary alert alert-primary">
-    <h4>Total Score</h4>
-    <span class="display-3"><%= @exam.total_score %></span>
-  </div>
-
-  <h4 class="text-danger">Remain time <span id="timer"><%= @exam.time / 60 %></span> minutes!</h4>
-
-  <!-- submission form -->
-  <div class="list-group col-10 offset-1 mt-2">
-    <%= form_for @submission do |f| %>
-      <h3 class="text-center my-2">Questions:</h3>
-      <% @questions.each do |question| %>
-        <%= f.fields_for :question_submissions, QuestionSubmission.new do |qs| %>
-          <%= render 'questions/question', question: question, qs: qs %>
+      <!-- submission form -->
+    <div class="list-group col-10 mt-2">
+      <%= form_for @submission do |f| %>
+        <% @questions.each do |question| %>
+          <%= f.fields_for :question_submissions, QuestionSubmission.new do |qs| %>
+            <%= render 'questions/question', question: question, qs: qs %>
+          <% end %>
         <% end %>
+        
+        <%= f.hidden_field :exam_id, value: @exam.id %>
+        <%= f.hidden_field :response_time, value: 0 %>
+        
+        <div class="form-group text-center mt-4">
+          <%= f.submit "Finish Quiz", class: "btn btn-success" %>
+        </div>
       <% end %>
-      
-      <%= f.hidden_field :exam_id, value: @exam.id %>
-      <%= f.hidden_field :response_time, value: 0 %>
-      
-      <div class="form-group text-center mt-4">
-        <%= f.submit "Finish Quiz", class: "btn btn-success" %>
+    </div>
+  </div>
+
+  
+  <div class="col-lg-2 d-none d-lg-block">
+    <div class="position-fixed">
+      <div class="text-danger"><span class="display-5" id="timer"><%= @exam.time / 60 %></span> minutes!</div>
+
+      <div class="border border-primary alert alert-primary">
+        <h5>Number of questions</h5>
+        <span class="display-5"><%= @exam.questions.count %></span>
       </div>
-    <% end %>
+
+      <div class="border border-primary alert alert-primary">
+        <h5>Total Score</h5>
+        <span class="display-5"><%= @exam.total_score %></span>
+      </div>
+    </div>
   </div>
 </div>

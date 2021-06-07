@@ -1,21 +1,19 @@
   <div class="card mb-3 border border-2">
     <div class="card-header bg-info">
-      <h3><%= question.title %></h3>
+      <h4><%= question.title %></h4>
     </div>
     <div class="card-body">
       <h4 class="card-text">Score: <%= question.score %></p>
       <div class="row">
-        <% if question.options.pluck(:is_correct).count(true) > 1 %>
+        <% if question.multiple_choice_question? %>
           <%= render 'questions/multi_options', question: question, qs: qs %>
         <% else %>
           <% question.options.each do |option| %>
-            <div class="col-md-6 my-1 text-center border border-light grey-back pt-1">
-              <h3>
-                <span class="btn btn-primary btn-sm option-btn">
-                  <%= qs.radio_button :options, option.content %>
-                  <%= qs.label :options, option.content, value: option.content %>
-                </span>
-              </h3>
+            <div class="col-md-6 border border-2 rounded-pill pt-1 bg-light">
+              <h5>
+                <%= qs.check_box :options, {:multiple => true, class: "check" }, option.content %>
+                <%= qs.label :options, option.content, value: option.content %>
+              </h5>
             </div>
             <%= qs.hidden_field :question_id, value: question.id %>
           <% end %>
