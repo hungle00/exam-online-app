@@ -2,21 +2,16 @@
   <div class="card-body">
     <div class="row">
       <% question.options.each do |option| %>
-      	<div class="col-md-5 offset-md-1 my-1 text-center border border-light grey-back pt-1">
-				  <h3>
-            <% if option.is_correct %>
-              <span class="btn btn-danger btn-sm option-btn"><!--Select option as radio button-->
-                <label><%= option.content %></label>
-                <input type="radio" value="<%= option.content %>"><br>
-              </span>
-            <% else %>
-              <span class="btn btn-primary btn-sm option-btn"><!--Select option as radio button-->
-                <label><%= option.content %></label>
-                <input type="radio" value="<%= option.content %>"><br>
-              </span>
-            <% end %>
-				  </h3>
-			  </div>
+          <div class="col-md-6 border border-2 rounded-pill py-2">
+				    <h5>
+              <input type="radio" value="<%= option.content %>">
+              <% if option.is_correct %>
+                <label class="text-primary"><%= option.content %></label>
+              <% else %>
+                <label class="text-danger"><%= option.content %></label>
+              <% end %>
+            </h5>
+          </div>
       <% end %>
     </div>
   </div>

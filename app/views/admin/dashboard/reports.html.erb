@@ -1,6 +1,6 @@
 <h2>All User Reports</h2>
 
- <table class="table table-hover mt-4">
+ <table class="table table-striped mt-4">
   <thead>
     <tr>
       <th>Question</th>
@@ -16,7 +16,7 @@
         <td><%= link_to report.question.title, report.question.exam %></td>
         <td><%= report.user.username %></td>
         <td><%= report.content %></td>
-        <td><%= link_to '<span class="material-icons">delete</span>'.html_safe, report, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %></td>
+        <td><%= link_to '<span class="material-icons">delete</span>'.html_safe, report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
      </tr> 
     <% end %>
   </tbody>
