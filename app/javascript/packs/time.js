@@ -41,3 +41,9 @@ function submitExam(timeElem) {
     document.getElementById("new_submission").submit();
   }, n * 1000)
 }
+
+$(document).ready(function(){
+  $('.check').click(function() {
+    $('.check').not(this).prop('checked', false);
+  });
+});

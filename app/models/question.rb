@@ -10,4 +10,8 @@ class Question < ApplicationRecord
   def answers
     options.select { |option| option.is_correct? } 
   end
+
+  def multiple_choice_question?
+    answers.size > 1
+  end
 end
