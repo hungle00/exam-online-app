@@ -1,7 +1,12 @@
-<tr>
-  <td><strong><%= link_to highlight(exam.title, params[:search]), exam %></strong></td>
-  <td><%= exam.category.name %></td>
-  <td><%= exam.total_score %></td>
-  <td><%= link_to 'Edit', edit_exam_path(exam), class: "btn btn-info btn-sm"  %></td>
-  <td><%= link_to 'Delete', exam, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
-</tr>
+<div class="col-6 py-2 px-2">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to highlight(exam.title, params[:search]), exam %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= exam.category.name %></h6>
+      <div class="card-text">
+        <p class="d-inline">Total score: <%= exam.total_score %></p> |
+        <p class="d-inline">Submissions: <%= exam.submissions.count %></p>
+      </div>
+    </div>
+  </div>
+</div>

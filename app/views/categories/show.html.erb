@@ -1,20 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1><strong><%= @category.name %></strong></h1>
-<%= link_to 'Back', categories_path, class: 'btn btn-primary' %>
-<table class="table table-hover mt-4">
-  <thead>
-    <tr>
-      <th>Exam Title</th>
-      <th>Total Score</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= link_to 'Back', exams_path, class: 'btn btn-primary' %>
 
-  <tbody>
-    <%= render @exams %>
-  </tbody>
+<div class="row">
+  <%= render @exams %>
+</div>
+
 </table>
 
 <!-- Button trigger modal -->
@@ -23,7 +15,7 @@
   <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#categoryModal">
     Edit
   </button> |
-  <%= render 'modal' %>
+  <%= render 'admin/categories/modal' %>
   <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#examModal">
     New Exam
   </button> | 
