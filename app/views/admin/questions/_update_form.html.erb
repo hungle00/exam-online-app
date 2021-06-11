@@ -21,7 +21,7 @@
   	<%= f.number_field :score, class: "form-control", placeholder: "Score" %>
   </div>
 
-  <h4>Options</h4>
+  <h5>Options</h5>
   <div class="row">
     <template>
       <%= f.fields_for :options, Option.new, child_index: 'NEW_RECORD' do |option| %>
@@ -33,7 +33,7 @@
       <%= render "admin/options/form", f: option %>
     <% end %>
 
-    <a href="#" onclick="addOption(event)" class="btn btn-info btn-sm mb-2">Add Option</a>
+    <a href="#" onclick="addOption(event)">Add Option</a>
 
   </div>
 

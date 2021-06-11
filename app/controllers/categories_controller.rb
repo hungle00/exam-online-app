@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
+    @categories = Category.all
     @category = Category.friendly.find(params[:id])
     @exams = @category.exams
     @exam = Exam.new

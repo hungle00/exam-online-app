@@ -1,13 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <h1><strong><%= @category.name %></strong></h1>
-<%= link_to 'Back', exams_path, class: 'btn btn-primary' %>
 
 <div class="row">
-  <%= render @exams %>
+  <div class="row col-md-8 mb-4 border-end">
+    <%= render @exams %>
+  </div>
+  <div class="col-md-4 mb-5 ps-4">
+    <div class="card mt-3">  
+      <div class="card-header">
+        <h2>All Categories</h2>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @categories.each do |category| %>
+          <li class="list-group-item">
+            <h4 class="card-title"><%= link_to category.name, category %></h4>
+            <i class="card-text">Have <%= category.exams.count%> exams.</i>
+          </li>
+        <% end %>
+      <ul>
+    </div>
+  </div>
 </div>
-
-</table>
 
 <!-- Button trigger modal -->
 

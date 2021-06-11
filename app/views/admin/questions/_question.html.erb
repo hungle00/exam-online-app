@@ -1,8 +1,7 @@
-<div class="card options">
-  <div class="card-body">
+<div class="options">
     <div class="row">
       <% question.options.each do |option| %>
-          <div class="col-md-6 border border-2 rounded-pill py-2">
+          <div class="col-md-6 border border-2 rounded-pill py-1">
 				    <h5>
               <input type="radio" value="<%= option.content %>">
               <% if option.is_correct %>
@@ -14,5 +13,4 @@
           </div>
       <% end %>
     </div>
-  </div>
 </div> 

@@ -9,10 +9,11 @@
         <li class="nav-item active">
           <%= link_to "Exams", exams_path, class:"nav-link" %>
         </li>
-        <% if current_user && current_user.is_admin %>
-          <li><%= link_to "Admin", categories_path, class:"nav-link" %></li>
-        <% else %>
+        <% if current_user %>
           <li><%= link_to "Top Users", top_users_path, class:"nav-link" %></li>
+          <% if current_user.is_admin %>
+            <li><%= link_to "Admin", categories_path, class:"nav-link" %></li>  
+          <% end %>
         <% end %>
       </ul>
       <ul class="navbar-nav ms-auto">

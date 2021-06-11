@@ -4,26 +4,21 @@ class Admin::QuestionsController < ApplicationController
   before_action :set_exam
   before_action :set_question, only: [:edit, :update, :destroy]
 
-
-  def edit
-  
-  end
-
   def create
     @question = @exam.questions.build(question_params)
 
     if @question.save
       redirect_to exam_path(@exam), notice: 'Question was successfully created.'
     else
-      redirect_back fallback_location: exam_path(@exam), status: :unprocessable_entity 
+      redirect_to exam_path(@exam)
     end
   end
 
   def update
     if @question.update(question_params)
-      redirect_to exam_path(@exam), notice: 'Question was successfully created.'
+      redirect_to exam_path(@exam), notice: 'Question was successfully updeated.'
     else
-      render :edit
+      redirect_to exam_path(@exam)
     end
   end
 
