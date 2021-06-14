@@ -1,8 +1,40 @@
-<div class="text-center bg-light mt-5 p-5">
-  <div class="container">
-    <h1 class="font-weight-bold">Welcome to Exam Online App</h1>
-    <p class="mt-4"><%= link_to 'Register', new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
-    <p> Or have an account, <%= link_to 'Log In', new_user_session_path %></p>
-  </div>
-</div>
 
+    <div class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white" 
+       style="background-image: url('https://s35691.pcdn.co/wp-content/uploads/2015/09/iStock_exam.150922.jpg');">
+      <h1 class="font-weight-bold">Welcome to Exam Online App</h1>
+      <p class="lead">Exam Online App has several exams based on different things. </p>
+      <p class="mt-4"><%= link_to 'Register', new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+      <p> Or have an account, <%= link_to 'Log In', new_user_session_path %></p>
+    </div>
+
+    <h1 class="text-center mt-4">Why Choose We?</h1>
+    <div class="row mt-4">
+      <div class="col-5 offset-1">
+        <h4><span class="material-icons">done</span>Competitive pricing</h4>
+        <h4><span class="material-icons">done</span>Friendly UI</h4>
+      </div>
+      <div class="col-5 offset-1">
+        <h4><span class="material-icons">done</span>Competitive pricing</h4>
+        <h4><span class="material-icons">done</span>Friendly UI</h4>
+      </div>
+    </div>
+    <div class="row text-center my-5 py-5">
+      <div class="col">
+        <div class="border py-4 rounded-circle">
+          <span class="material-icons md-48">people</span>
+          <h2> 1000+ Users </h2>
+        </div>
+      </div>
+      <div class="col">
+        <div class="border py-4 border-4 rounded-circle">
+          <span class="material-icons md-48">quiz</span>
+          <h2> 1000+ Exams </h2>
+        </div>
+      </div>
+      <div class="col">
+        <div class="border py-4 rounded-circle">
+          <span class="material-icons md-48">category</span>
+          <h2> 15+ Categories </h2>
+        </div>
+      </div>
+    </div>

@@ -4,6 +4,7 @@ class ExamsController < ApplicationController
   # GET /exams or /exams.json
   def index
     @exams = Exam.includes(:category)
+    @categories = Category.all
     @exam = Exam.new
 
     @exams = @exams.search(params[:search])

@@ -2,6 +2,13 @@ class Admin::CategoriesController < ApplicationController
     before_action :set_category, only: %i[ update destroy ]
     before_action :authenticate_user!
     before_action :require_admin
+
+    def index
+      @categories = Category.includes(:exams)
+      @category = Category.new
+
+      render layout: "admin"
+    end
   
     # POST /categories or /categories.json
     def create

@@ -1,6 +1,6 @@
 <h2>Stats</h2>
 
-<table class="table table-hover mt-4">
+<table class="table table-striped mt-4">
   <thead>
     <tr>
       <th>Exam Title</th>
@@ -16,6 +16,8 @@
       <td><%= exam.title %></td>
       <td><%= exam.total_score %></td>
       <td><%= exam.submissions.count %></td>
+      <td><%= link_to 'Edit', edit_exam_path(exam), class: "btn btn-info btn-sm"  %></td>
+      <td><%= link_to 'Delete', exam, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
     </tr> 
     <% end %>
   </tbody>

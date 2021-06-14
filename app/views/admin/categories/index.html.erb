@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="mb-4">All Categories</h1>
+
+<table class="table table-striped w-75">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Number of Exams</th>
+      <th>Number of Submissions</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+     <% @categories.each do |category| %>
+      <tr>
+        <td><%= link_to category.name, category %></td>
+        <td><%= category.exams.count %></td>
+        <td><%= category.submissions %></td>
+        <td><%= link_to 'Edit', edit_category_path(category), class: "btn btn-info btn-sm"  %></td>
+        <td><%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+     </tr> 
+    <% end %>
+  </tbody>
+</table>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#categoryModal">
+  New Category
+</button>
+<!-- Modal -->
+<%= render 'modal' %>

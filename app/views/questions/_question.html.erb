@@ -3,20 +3,25 @@
       <h4><%= question.title %></h4>
     </div>
     <div class="card-body">
-      <h4 class="card-text">Score: <%= question.score %></p>
-      <div class="row">
+      <div class="card-text">
+        <h5>Score: <%= question.score %></h5>
         <% if question.multiple_choice_question? %>
-          <%= render 'questions/multi_options', question: question, qs: qs %>
-        <% else %>
-          <% question.options.each do |option| %>
-            <div class="col-md-6 border border-2 rounded-pill pt-1 bg-light">
+          <p class="alert alert-warning" role="alert">Question has more than 1 answer<p>
+        <% end %>
+      </div>
+      <div class="row">
+        <% question.options.each do |option| %>
+            <div class="col-md-6 border border-2 rounded-pill py-1 bg-light">
               <h5>
-                <%= qs.check_box :options, {:multiple => true, class: "check" }, option.content %>
+                <% if question.multiple_choice_question? %>
+                  <%= qs.check_box :options, {:multiple => true}, option.content %>
+                <% else %>
+                  <%= qs.check_box :options, {:multiple => true, class: "check" }, option.content %>
+                <% end %>
                 <%= qs.label :options, option.content, value: option.content %>
               </h5>
             </div>
             <%= qs.hidden_field :question_id, value: question.id %>
-          <% end %>
         <% end %>
       </div>
     </div>

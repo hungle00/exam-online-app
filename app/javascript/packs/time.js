@@ -43,7 +43,8 @@ function submitExam(timeElem) {
 }
 
 $(document).ready(function(){
-  $('.check').click(function() {
-    $('.check').not(this).prop('checked', false);
+  $('.check').click(function(event) {
+    const options = $(event.target).closest('.row').find('.check');
+    options.not(this).prop('checked', false);
   });
 });
