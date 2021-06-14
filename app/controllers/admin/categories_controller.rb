@@ -4,7 +4,7 @@ class Admin::CategoriesController < ApplicationController
     before_action :require_admin
 
     def index
-      @categories = Category.all
+      @categories = Category.includes(:exams)
       @category = Category.new
 
       render layout: "admin"

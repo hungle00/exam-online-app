@@ -14,7 +14,10 @@
       <tr>
         <td><%= submission.score %> / <%= submission.exam.total_score %></td>
         <td><%= submission.exam.title %></td>
-        <td><%= submission.user.username %></td>
+        <td>
+          <%= avatar_for(submission.user, size: 30) %>
+          <%= submission.user.username %>
+        </td>
         <td><%= time_ago_in_words(submission.created_at) %></td>
       </tr> 
     <% end %>

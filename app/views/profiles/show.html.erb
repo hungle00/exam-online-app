@@ -8,8 +8,9 @@
       </div>
 
       <% if @user.avatar.attached? %>
-        <%= link_to "View avatar", url_for(@user.avatar) %><br>
-        <%= image_tag @user.avatar, size: "200x200" %>
+        <%= link_to avatar_for(@user), url_for(@user.avatar) %><br>
+      <% else %>
+        <%= avatar_for(@user) %>
       <% end %>
     </section>
   </div>

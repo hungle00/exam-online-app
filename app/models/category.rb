@@ -7,6 +7,10 @@ class Category < ApplicationRecord
   
   validates :name, presence: true, uniqueness: true
 
+  def submissions
+    exams.sum { |exam| exam.submissions.count }
+  end
+
   private
     #ensure that there are no exams referencing this category
     def ensure_not_referenced_by_an_exam
