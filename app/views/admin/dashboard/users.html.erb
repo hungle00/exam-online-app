@@ -16,6 +16,7 @@
       <td>
         <%= avatar_for(user, size: 30) %>
         <%= link_to user.username, profile_path(user) %>
+        <span class='activity-status mt-2 mx-1 user-<%= user.id %>'>•</span>
       </td>
       <td><%= user.email %></td>
       <td><%= time_ago_in_words(user.created_at) %> ago</td>

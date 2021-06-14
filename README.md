@@ -17,4 +17,4 @@
 
 * CRUD Categories
 * CRUD Exams
-* View statics dashboard
+* View statistics dashboard
