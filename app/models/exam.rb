@@ -33,7 +33,6 @@ class Exam < ApplicationRecord
     def send_notifications_to_users
       User.all.each do |user|
         Notification.create!(content: "New exam is created", user: user)
-        ActionCable.server.broadcast "notifications.#{ user.id }", { message: "new notification" }
       end
     end
 
