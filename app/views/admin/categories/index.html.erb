@@ -18,7 +18,6 @@
         <td><%= link_to category.name, category %></td>
         <td><%= category.exams.count %></td>
         <td><%= category.submissions %></td>
-        <td><%= link_to 'Edit', edit_category_path(category), class: "btn btn-info btn-sm"  %></td>
         <td><%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
      </tr> 
     <% end %>

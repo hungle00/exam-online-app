@@ -4,7 +4,8 @@ class Submission < ApplicationRecord
   has_many :question_submissions, dependent: :destroy
   accepts_nested_attributes_for :question_submissions, reject_if: proc { |att| att['options'].blank? }
   
-  after_create :send_notifications_to_users, if: :top_score?
+  after_save :send_notifications_to_users, if: :top_score?
+
 
   def self.order_by_range
     all.group_by(&:grade).transform_values(&:count)
@@ -32,16 +33,15 @@ class Submission < ApplicationRecord
     end
   end
 
-  private
+  def top_score?
+    grade == "Excellent"
+  end
 
-    def top_score?
-      exam.top_score.include?(self)
-    end
+  private
 
     def send_notifications_to_users
       User.all.each do |user|
         Notification.create!(content: "New top user in exam: #{exam.title}", user: user)
-        ActionCable.server.broadcast "notifications.#{ user.id }", { message: "new notification" }
       end
     end
 end

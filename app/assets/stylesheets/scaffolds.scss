@@ -67,3 +67,12 @@ label {
 
 .material-icons.md-48 { font-size: 48px; }
 .material-icons.md-red { color: rgba(255, 7, 7, 0.863); }
+
+.activity-status {
+  font-size: 20px;
+  float: left;
+  color: #dbd9d9;
+  &.online {
+    color: #64dd17;
+  }
+}

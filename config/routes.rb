@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   
   resources :submissions, only: [:create, :show]
   resources :reports, only: [:create, :destroy]
-  resources :notifications, only: [:index]
+  resources :notifications, only: [:index, :update]
   
   root to: 'pages#home'
   get 'pages/home'
