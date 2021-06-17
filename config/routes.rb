@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'notifications/index'
   scope module: 'admin' do
     resources :categories, except: [:show]
-    resources :exams, except: [:index, :show, :new] do
+    resources :exams, except: [:index, :show] do
       resources :questions, except: [:index, :show, :new]
     end
     get 'dashboard/users'
@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   
   root to: 'pages#home'
   get 'pages/home'
-  #get 'top_score/index'
   resources :profiles, only: [:show]
   #get '/user/:id', to: 'user#show', as: 'profile'
   get '/top_score', to: 'top_score#index'

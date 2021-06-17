@@ -10,7 +10,7 @@ class Admin::QuestionsController < ApplicationController
     if @question.save
       redirect_to exam_path(@exam), notice: 'Question was successfully created.'
     else
-      redirect_to exam_path(@exam)
+      render "exams/show", status: :unprocessable_entity
     end
   end
 
@@ -18,7 +18,7 @@ class Admin::QuestionsController < ApplicationController
     if @question.update(question_params)
       redirect_to exam_path(@exam), notice: 'Question was successfully updeated.'
     else
-      redirect_to exam_path(@exam)
+      render "exams/show", status: :unprocessable_entity
     end
   end
 

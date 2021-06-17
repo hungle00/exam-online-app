@@ -35,6 +35,20 @@ window.show = function(event) {
 
 }
 
+window.addQuestion = function(event) {
+  event.preventDefault();  
+  const template = document.querySelector("template#question");
+  const questions = document.querySelector(".questions");
+  const question = template.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())
+  questions.insertAdjacentHTML('afterend', question)
+  console.log(template)
+}
+
+window.removeQuestion = function(event) {
+  event.preventDefault();
+  event.target.remove();
+}
+
 window.addOption = function(event) {
   event.preventDefault();   
   let p = event.target.parentElement
