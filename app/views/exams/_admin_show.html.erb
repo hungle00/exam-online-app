@@ -5,16 +5,11 @@
     <div class="list-group col-11 mt-2">
       <% @exam.questions.each do |question| %>
         <div class="card card-body  border border-2 mb-3 position-relative">
-          <h4 class="card-title"><%= question.title %></h4>
+          <h4 class="card-title mb-3"><%= question.title %></h4>
           <div class="position-absolute top-0 end-0">
-            <a href="#" onclick="show(event)" class="btn btn-info btn-sm">
-              <span class="material-icons">edit</span>
-            </a> |
-            <%= link_to '<span class="material-icons">clear</span>'.html_safe, [@exam, question], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+            <span class="btn btn-info btn-sm">Score:<small><%= question.score %></small></span> |
+            <%= link_to '<span class="material-icons">clear</span>'.html_safe, [@exam, question], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %> 
           </div>
-          <h6 class="card-subtitle mb-2 text-muted">
-            Score:<small><%= question.score %></small>
-          </h6>
           <% if question.options.size < 2 %>
             <p class="alert alert-danger" role="alert">You must add at least 2 options</p>
           <% end %>
@@ -22,9 +17,6 @@
             <p class="alert alert-danger" role="alert">You must set at least 1 correct option</p>
           <% end %>
           <%= render 'admin/questions/question', question: question %>
-          <div class="d-none question-form" id="collapseExample-<%= question.id %>">
-            <%= render 'admin/questions/update_form', question: question %>
-          </div>
         </div>
       <% end %>
     </div>

@@ -46,15 +46,17 @@ window.addQuestion = function(event) {
 
 window.removeQuestion = function(event) {
   event.preventDefault();
-  event.target.remove();
+  const question = event.target.closest(".question")
+  question.remove();
 }
 
 window.addOption = function(event) {
   event.preventDefault();   
-  let p = event.target.parentElement
+  //let p = event.target.parentElement
+  let p = event.target.closest(".options")
   const template = p.querySelector("template");
   const option = template.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())  // for uniq option form, can use random() instead
-  event.target.insertAdjacentHTML('beforebegin', option)
+  event.target.parentElement.insertAdjacentHTML('beforebegin', option)
 }
 
 window.removeOption = function(event) {
