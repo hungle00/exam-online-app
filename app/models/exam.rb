@@ -5,13 +5,12 @@ class Exam < ApplicationRecord
 
   validates :title, presence: true, length: {minimum: 3, maximum: 80}
   accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
-  # set default 60 second if null, then convert minute to second
+
   before_save do 
     self.time = 1 if time.nil?
-    #time.nil? ? self.time = 60 : self.time = time * 60 
   end
 
-  #after_create :send_notifications_to_users
+  after_create :send_notifications_to_users
 
   scope :sort_by_title, -> { order(title: :asc) }
   scope :sort_by_score, -> { all.sort_by(&:total_score) }

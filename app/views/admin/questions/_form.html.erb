@@ -1,4 +1,5 @@
-    <div class="question border-start border-end border-5 border-primary rounded-3 my-4 px-2 bg-white">
+    <%= content_tag :div, data: { new_record: q.object.new_record? },
+      class: "question border-start border-end border-5 border-primary rounded-3 my-4 px-2 bg-white" do %>
       <div class="row my-2">
         <div class="form-group col-10">
           <h5 class="font-weight-normal"><%= q.label :title %></h5>
@@ -23,12 +24,12 @@
           <%= render "admin/options/form", f: option %>
         <% end %>
 
-        <%= q.hidden_field :_destroy %>
-
         <div class="my-2">
           <a href="#" onclick="addOption(event)" class="btn btn-sm btn-primary">Add Option</a>
           <a href="#" onclick="removeQuestion(event)" class="btn btn-sm btn-primary">Remove Question</a>
         </div>
       </div>
 
-    </div>
+      <%= q.hidden_field :_destroy %>
+
+    <% end %>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     get 'dashboard/users'
     get 'dashboard/reports'
     get 'dashboard/stats'
+    get 'users_export_csv' => 'export_csv#users'
+    get 'reports_export_csv' => 'export_csv#reports'
   end
 
   resources :categories, only: [:show]

@@ -1,6 +1,6 @@
-## EXAM ONLINE APP
+# EXAM ONLINE APP
 
-### Dependencies
+## Dependencies
 
 * Devise - For implementing authentication
 
@@ -8,13 +8,25 @@
 
 * Charkick - For draw chart
 
-### General functionality
+## General functionality
 * Authenticate users (login/signup pages + logout)
 * Oauth with Github/ Twitter  
-* Take Exam  
+* Take Exam 
+* Report questions  
 
 ` - Admin User `
 
 * CRUD Categories
 * CRUD Exams
-* View statistics dashboard
+* View dashboard
+* Export users, submissions list to CSV
+
+
+## Installation
+
+```
+rails db:migrate
+rails db:seed
+rails s
+```
+

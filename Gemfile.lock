@@ -86,6 +86,7 @@ GEM
     chartkick (3.4.2)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
+    csv (3.0.9)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -258,6 +259,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   chartkick
+  csv
   devise (~> 4.7, >= 4.7.1)
   faker
   friendly_id (~> 5.4.0)

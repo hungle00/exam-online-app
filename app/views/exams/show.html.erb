@@ -21,7 +21,7 @@
     
     <div class="col-md-3 col-sm-3 col-3 border border-left-0 border-primary alert alert-primary">
       <h4>Time in minutes</h4>
-      <span class="display-4"><%= @exam.time / 60 %></span>
+      <span class="display-4"><%= @exam.time %></span>
     </div>
     
     <h2><%= link_to "Take Exam", take_exam_path(@exam), class: "btn btn-info btn-sm", data: { turbolinks: "false"} %></h2>

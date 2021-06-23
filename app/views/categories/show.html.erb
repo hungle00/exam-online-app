@@ -30,10 +30,7 @@
     Edit
   </button> |
   <%= render 'admin/categories/modal' %>
-  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#examModal">
-    New Exam
-  </button> | 
-  <%= render 'admin/exams/modal' %>
+  <%= link_to 'New Exam', new_exam_path, class: "btn btn-primary btn-sm" %> |
   <%= link_to 'Delete', @category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
 
 <% end %>

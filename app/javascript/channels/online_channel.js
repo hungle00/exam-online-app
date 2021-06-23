@@ -3,7 +3,7 @@ import consumer from "./consumer"
 consumer.subscriptions.create("OnlineChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
-    this.perform("appear")
+    //this.perform("appear")
   },
 
   disconnected() {

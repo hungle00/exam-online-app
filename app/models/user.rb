@@ -16,12 +16,15 @@ class User < ApplicationRecord
   has_many :submissions, dependent: :destroy
   has_many :reports, dependent: :destroy
 
+  scope :online, ->{ where("last_seen_at > ?", 5.minutes.ago) }
+
   def self.omniauth(auth)
     username = auth.info.nickname
     user = find_or_create_by!(username: username) do |u|
       u.username = username
       u.password = Devise.friendly_token[0, 20]
       u.oauth_token = auth.credentials.token
+      u.provider = auth.provider
       u.email = "#{username}@email.com" #fake
     end
     return unless user
@@ -34,6 +37,17 @@ class User < ApplicationRecord
 
   def count_submissions
     submissions.count
+  end
+
+  def self.to_csv
+    attributes = %w{username email provider created_at updated_at}
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |user|
+        csv << attributes.map{ |attr| user.send(attr) }
+      end
+    end
   end
 
   private 
