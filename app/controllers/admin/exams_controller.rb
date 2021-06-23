@@ -3,8 +3,15 @@ class Admin::ExamsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_admin
 
+  # GET /exams/new
+  def new
+    @exam = Exam.new
+    render layout: "intro"
+  end
+
   # GET /exams/1/edit
   def edit
+    render layout: "intro"
   end
 
   # POST /exams or /exams.json
@@ -14,20 +21,16 @@ class Admin::ExamsController < ApplicationController
     if @exam.save
       redirect_to @exam, notice: "Exam was successfully created."
     else
-      redirect_back fallback_location: exams_path, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /exams/1 or /exams/1.json
   def update
-    respond_to do |format|
-      if @exam.update(exam_params)
-        format.html { redirect_to @exam, notice: "Exam was successfully updated." }
-        format.json { render :show, status: :ok, location: @exam }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @exam.errors, status: :unprocessable_entity }
-      end
+    if @exam.update(exam_params)
+      redirect_to @exam, notice: "Exam was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -45,6 +48,12 @@ class Admin::ExamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def exam_params
-      params.require(:exam).permit(:title, :time, :category_id)
+      params.require(:exam).permit(
+        :title, :time, :category_id,
+        questions_attributes: [
+          :id, :title, :score, :_destroy,
+          options_attributes: [:id, :content, :is_correct, :_destroy]
+        ])
+      #params.require(:exam).permit(:title, :time, :category_id)
     end
 end

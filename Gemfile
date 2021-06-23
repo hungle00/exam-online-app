@@ -55,3 +55,5 @@ gem 'omniauth-rails_csrf_protection'
 
 gem 'chartkick'
 gem 'groupdate'
+gem 'csv'
+gem 'pry'

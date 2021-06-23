@@ -5,18 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-#User.create!(email: "admin@email.com", username: "iamadmin", password: "admin00", is_admin: true)
-#c = Category.create!(name: "Music")
-#e = Exam.create!(title: "Music symbols", category: c)
-#q = Question.create!(title: "What is mf stand for?", score: 10, exam: e)
-#Option.create!(content: "Mezzo forte", is_correct: true, question: q)
-#Option.create!(content: "Mezzo piano", question: q)
-#Question.create!(title: "What is sonata form?", score: 20, exam: Exam.first)
-#Submission.create!(score: 20, exam: Exam.first, user: User.last)
+User.create!(email: "admin@email.com", username: "iamadmin", password: "admin00", is_admin: true)
+c = Category.create!(name: "Music")
+e = Exam.create!(title: "Music symbols", category: c, time: 1)
+q = Question.create!(title: "What is mf stand for?", score: 10, exam: e)
+Option.create!(content: "Mezzo forte", is_correct: true, question: q)
+Option.create!(content: "Mezzo piano", question: q)
+Question.create!(title: "What is sonata form?", score: 20, exam: e)
+
 ActiveRecord::Base.transaction do
   c = Category.create!(name: 'Literature')
-  e = Exam.create!(title: 'J.R.R.Tolkien', category: c)
-  #quote = [:hamlet_quote, :romeo_and_juliet_quote, :king_richard_iii_quote]
+  e = Exam.create!(title: 'J.R.R.Tolkien', category: c, time: 3)
   12.times do 
     q = Question.create!(title: Faker::Fantasy::Tolkien.poem, score: rand(10..15), exam: e)
     2.times do 

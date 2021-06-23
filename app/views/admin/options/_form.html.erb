@@ -1,6 +1,5 @@
 <%= content_tag :div, data: { new_record: f.object.new_record? }, class: "nested-fields col-6" do %>
     <div class="form-group">
-      <%= f.label :content %>
       <%= f.text_field :content, class: 'form-control' %>
 
       <%= f.check_box :is_correct, class:"form-check-input" %>

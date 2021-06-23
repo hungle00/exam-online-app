@@ -5,10 +5,7 @@
     <div class="my-3">
       <h1>All Exams</h1>
       <% if current_user && current_user.is_admin %><!--Show new exam button only for admins-->
-        <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#examModal">
-          New Exam
-        </button>
-        <%= render 'admin/exams/modal' %>
+        <%= link_to 'New Exam', new_exam_path, class: "btn btn-primary mt-3" %>
       <% end %>
     </div>
     <hr>

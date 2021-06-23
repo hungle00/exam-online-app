@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?	
+  before_action :set_last_seen_at, if: :user_signed_in?
 	
   def require_admin
 		if !current_user.is_admin
@@ -19,5 +20,9 @@ class ApplicationController < ActionController::Base
     update_attrs = [:username, :email, :password, :password_confirmation, :avatar, :remember_me]
     devise_parameter_sanitizer.permit :sign_up, keys: new_attrs            
     devise_parameter_sanitizer.permit :account_update, keys: update_attrs    
+  end
+
+  def set_last_seen_at
+    current_user.touch(:last_seen_at)
   end
 end
