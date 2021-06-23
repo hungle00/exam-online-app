@@ -15,7 +15,7 @@
       <h5>Options</h5>
       <div class="row options">
         <template>
-          <%= q.fields_for :options, Option.new, child_index: 'NEW_RECORD' do |option| %>
+          <%= q.fields_for :options, Option.new, child_index: 'NEW_OPTION' do |option| %>
             <%= render "admin/options/form", f: option %>
           <% end %>
         </template>
@@ -30,6 +30,6 @@
         </div>
       </div>
 
-      <%= q.hidden_field :_destroy %>
+      <%= q.hidden_field :_destroy, class: "remove-question" %>
 
     <% end %>

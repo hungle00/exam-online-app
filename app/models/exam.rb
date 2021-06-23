@@ -10,6 +10,10 @@ class Exam < ApplicationRecord
     self.time = 1 if time.nil?
   end
 
+  after_destroy do
+    submissions.destroy_all
+  end
+
   after_create :send_notifications_to_users
 
   scope :sort_by_title, -> { order(title: :asc) }
@@ -37,7 +41,6 @@ class Exam < ApplicationRecord
         Notification.create!(content: "New exam is created", user: user)
       end
     end
-
 end
 
 =begin

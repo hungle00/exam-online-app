@@ -38,16 +38,27 @@ window.show = function(event) {
 window.addQuestion = function(event) {
   event.preventDefault();  
   const template = document.querySelector("template#question");
+  //console.log(template)
   const questions = document.querySelector(".questions");
+  
   const question = template.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())
+  //console.log(question)
   questions.insertAdjacentHTML('afterend', question)
-  console.log(template)
 }
 
 window.removeQuestion = function(event) {
   event.preventDefault();
   const question = event.target.closest(".question")
-  question.remove();
+  console.log(question)
+  // New records are simply removed from the page
+  if (question.dataset.newRecord == "true") {
+    question.remove()
+  // Existing records are hidden and flagged for deletion
+  } else {
+    console.log(question.querySelector(".remove-question"))
+    question.querySelector(".remove-question").value = 1
+    question.style.display = 'none'
+  }
 }
 
 window.addOption = function(event) {
@@ -55,14 +66,16 @@ window.addOption = function(event) {
   //let p = event.target.parentElement
   let p = event.target.closest(".options")
   const template = p.querySelector("template");
-  const option = template.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())  // for uniq option form, can use random() instead
+  //console.log(template)
+  //debugger
+  const option = template.innerHTML.replace(/NEW_OPTION/g, new Date().getTime())  // for uniq option form, can use random() instead
+  //console.log(option)
   event.target.parentElement.insertAdjacentHTML('beforebegin', option)
 }
 
 window.removeOption = function(event) {
   event.preventDefault();  
   let wrapper = event.target.closest(".nested-fields")
-  console.log(wrapper)
 
   // New records are simply removed from the page
   if (wrapper.dataset.newRecord == "true") {
@@ -70,6 +83,7 @@ window.removeOption = function(event) {
   
   // Existing records are hidden and flagged for deletion
   } else {
+    //console.log(wrapper.querySelector("input[name*='_destroy']"))
     wrapper.querySelector("input[name*='_destroy']").value = 1
     wrapper.style.display = 'none'
   }

@@ -11,8 +11,11 @@
 ## General functionality
 * Authenticate users (login/signup pages + logout)
 * Oauth with Github/ Twitter  
+* Edit account / upload avatar
 * Take Exam 
-* Report questions  
+* Report if exam have problems
+* Receive notifications
+* View top submissions
 
 ` - Admin User `
 
@@ -24,9 +27,23 @@
 
 ## Installation
 
+*After clone and install ruby and js library, run:*
+
 ```
 rails db:migrate
 rails db:seed
 rails s
+```   
+
+*For send email and oauth with twitter/github features, create secrets.yml in config and insert:*
+
+```
+development:
+  mail_username: 
+  mail_password:
+  github_client_id: 
+  github_client_secret: 
+  twitter_client_id: 
+  twitter_client_secret: 
 ```
 
