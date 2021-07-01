@@ -47,3 +47,21 @@ development:
   twitter_client_secret: 
 ```
 
+
+## Use Docker  
+1.Clone and build docker image  
+```
+docker-compose build
+```  
+
+2.Create the database and run the migrations:  
+```
+docker-compose run --rm web bin/rails db:create  
+docker-compose run --rm web bin/rails db:migrate  
+docker-compose run --rm web bin/rails db:seed  
+```  
+
+3.Run the app:  
+```
+docker-compose up 
+```
